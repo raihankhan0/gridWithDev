@@ -70,9 +70,20 @@
           grid-template-columns: 1fr;
         }
       }
+      @media (max-width: 768px) {
+        .ticker {
+          grid-template-columns: 1fr;
+        }
+        .ticker-item {
+          background: limegreen;
+        }
+        .ticker h1 {
+          font-size: medium;
+        }
+      }
       @media (min-width: 900px) {
         .dashboard {
-          background: green;
+          background: blueviolet;
         }
       }
     </style>
