@@ -6,12 +6,8 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
+
     <title>Document</title>
-    <!-- Include Bootstrap CSS -->
-    <link
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
     <style>
       html,
       body {
@@ -19,19 +15,20 @@
         padding: 0;
         height: 100%;
       }
-
       .main {
         background-color: wheat;
         height: 100vh;
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        grid-template-rows: 0.8fr 2fr 9fr;
+        /* overflow-x: hidden; */
       }
-
       .filter {
         background: lightgoldenrodyellow;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+
         padding: 10px;
       }
-
       .filter-item {
         background-color: lightcoral;
         border: 1px solid #333;
@@ -40,12 +37,12 @@
         border-radius: 10px;
         margin: 5px;
       }
-
       .ticker {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 2fr));
         padding: 10px;
         background: lightgray;
       }
-
       .ticker-item {
         background-color: lightcoral;
         border: 1px solid #333;
@@ -57,10 +54,12 @@
 
       .dashboard {
         background: lightpink;
+        display: grid;
         padding: 10px;
-        flex: 1;
+        /* grid-template-columns: 1fr 1fr; */
+        /* grid-template-rows: repeat(auto-fit, minmax(400px, 1fr)); */
+        grid-template-columns: repeat(auto-fit, minmax(400px, 10fr));
       }
-
       .dashboard-item {
         background-color: rgb(212, 234, 236);
         border: 1px solid #333;
@@ -70,121 +69,83 @@
         margin: 5px;
       }
 
+      @media (max-width: 900px) {
+        .dashboard {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (max-width: 768px) {
+        .ticker {
+          grid-template-columns: 1fr;
+        }
+        .ticker-item {
+          background: limegreen;
+        }
+        .ticker h1 {
+          font-size: medium;
+        }
+      }
       @media (min-width: 900px) {
         .dashboard {
           background: blue;
+        }
+      }
+      @media (orientation: landscape) {
+        .ticker h1 {
+          font-size: medium;
         }
       }
     </style>
   </head>
   <body>
     <div class="main">
-      <div class="filter">
-        <div class="row">
-          <div class="col-sm-6 col-md-4 col-lg-3">
-            <div class="filter-item">filter 1</div>
-          </div>
-          <div class="col-sm-6 col-md-4 col-lg-3">
-            <div class="filter-item">filter 2</div>
-          </div>
-          <div class="col-sm-6 col-md-4 col-lg-3">
-            <div class="filter-item">filter 3</div>
-          </div>
-          <div class="col-sm-6 col-md-4 col-lg-3">
-            <div class="filter-item">filter 4</div>
-          </div>
-          <div class="col-sm-6 col-md-4 col-lg-3">
-            <div class="filter-item">filter 5</div>
-          </div>
-          <div class="col-sm-6 col-md-4 col-lg-3">
-            <div class="filter-item">filter 6</div>
-          </div>
-          <div class="col-sm-6 col-md-4 col-lg-3">
-            <div class="filter-item">filter 7</div>
-          </div>
-          <div class="col-sm-6 col-md-4 col-lg-3">
-            <div class="filter-item">filter 8</div>
-          </div>
-          <div class="col-sm-6 col-md-4 col-lg-3">
-            <div class="filter-item">filter 9</div>
-          </div>
+      <div class="filter filter-grid">
+        <div class="filter-item filter1">filter 1</div>
+        <div class="filter-item filter2">filter 2</div>
+        <div class="filter-item filter3">filter 3</div>
+        <div class="filter-item filter4">filter 4</div>
+        <div class="filter-item filter5">filter 5</div>
+        <div class="filter-item filter6">filter 6</div>
+        <div class="filter-item filter7">filter 7</div>
+        <div class="filter-item filter8">filter 8</div>
+        <div class="filter-item filter9">filter 9</div>
+      </div>
+      <div class="ticker ticker-grid">
+        <div class="ticker-item ticker1">
+          <h1>Lorem, ipsum dolor.</h1>
+          <p>Lorem.</p>
+          <p>9645</p>
+        </div>
+        <div class="ticker-item ticker2">
+          <h1>Lorem, ipsum dolor.</h1>
+          <p>Lorem.</p>
+          <p>9849</p>
+        </div>
+        <div class="ticker-item ticker3">
+          <h1>Lorem, ipsum dolor.</h1>
+          <p>Lorem.</p>
+          <p>54165</p>
+        </div>
+        <div class="ticker-item ticker4">
+          <h1>Lorem, ipsum dolor.</h1>
+          <p>Lorem.</p>
+          <p>6565</p>
+        </div>
+        <div class="ticker-item ticker5">
+          <h1>Lorem, ipsum dolor.</h1>
+          <p>Lorem.</p>
+          <p>125213</p>
         </div>
       </div>
-
-      <div class="ticker">
-        <div class="row">
-          <div class="col-sm-6 col-md-4 col-lg-3">
-            <div class="ticker-item">
-              <h1>Lorem, ipsum dolor.</h1>
-              <p>Lorem.</p>
-              <p>9645</p>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-4 col-lg-3">
-            <div class="ticker-item">
-              <h1>Lorem, ipsum dolor.</h1>
-              <p>Lorem.</p>
-              <p>9849</p>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-4 col-lg-3">
-            <div class="ticker-item">
-              <h1>Lorem, ipsum dolor.</h1>
-              <p>Lorem.</p>
-              <p>54165</p>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-4 col-lg-3">
-            <div class="ticker-item">
-              <h1>Lorem, ipsum dolor.</h1>
-              <p>Lorem.</p>
-              <p>6565</p>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-4 col-lg-3">
-            <div class="ticker-item">
-              <h1>Lorem, ipsum dolor.</h1>
-              <p>Lorem.</p>
-              <p>125213</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="dashboard">
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="dashboard-item dashboard1">
-              <div id="chart1"></div>
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="dashboard-item dashboard2">
-              <div id="chart2"></div>
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="dashboard-item dashboard3">
-              <div id="chart3"></div>
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="dashboard-item dashboard4">
-              <div id="chart4"></div>
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="dashboard-item dashboard5">
-              <div id="chart5"></div>
-            </div>
-          </div>
-        </div>
+      <div class="dashboard dashboard-grid">
+        <div class="dashboard-item dashboard1"><div id="chart1"></div></div>
+        <div class="dashboard-item dashboard2"><div id="chart2"></div></div>
+        <div class="dashboard-item dashboard3"><div id="chart3"></div></div>
+        <div class="dashboard-item dashboard4"><div id="chart4"></div></div>
+        <div class="dashboard-item dashboard5"><div id="chart5"></div></div>
       </div>
     </div>
-
-    <!-- Include jQuery and Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn3.devexpress.com/jslib/23.1.3/js/dx.all.js"></script>
     <script>
       $(function () {
